@@ -1,0 +1,167 @@
+<!-- 
+  Modern Contact Form
+  This example demonstrates:
+  1. Form styling and validation
+  2. Custom form elements
+  3. CSS animations and transitions
+  4. Input focus states
+  5. Error handling visual feedback
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        /* Base styles and custom properties */
+        :root {
+            --primary-color: #3b82f6;
+            --error-color: #ef4444;
+            --success-color: #22c55e;
+            --input-bg: #f8fafc;
+            --input-border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            padding: 2rem;
+            background: #f1f5f9;
+        }
+
+        /* Form container */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .form__title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        /* Form group styling */
+        .form__group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        /* Label styling */
+        .form__label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #4b5563;
+        }
+
+        /* Input field styling */
+        .form__input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--input-border);
+            border-radius: 4px;
+            background: var(--input-bg);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form__input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Textarea specific styles */
+        .form__textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Error state styling */
+        .form__input--error {
+            border-color: var(--error-color);
+        }
+
+        .form__error {
+            color: var(--error-color);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form__input--error + .form__error {
+            display: block;
+        }
+
+        /* Submit button styling */
+        .form__submit {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form__submit:hover {
+            background: #2563eb;
+        }
+
+        .form__submit:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Success message styling */
+        .form__success {
+            color: var(--success-color);
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .form--submitted .form__success {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <form class="contact-form">
+        <h2 class="form__title">Contact Us</h2>
+        
+        <div class="form__group">
+            <label class="form__label" for="name">Name</label>
+            <input type="text" id="name" class="form__input" required>
+            <span class="form__error">Please enter your name</span>
+        </div>
+
+        <div class="form__group">
+            <label class="form__label" for="email">Email</label>
+            <input type="email" id="email" class="form__input" required>
+            <span class="form__error">Please enter a valid email address</span>
+        </div>
+
+        <div class="form__group">
+            <label class="form__label" for="message">Message</label>
+            <textarea id="message" class="form__input form__textarea" required></textarea>
+            <span class="form__error">Please enter your message</span>
+        </div>
+
+        <button type="submit" class="form__submit">Send Message</button>
+        <div class="form__success">Message sent successfully!</div>
+    </form>
+</body>
+</html>
