@@ -1,11 +1,18 @@
-<!-- 
+<!--
   Product Card Grid Layout
-  This example demonstrates:
-  1. CSS Grid for responsive layout
-  2. Modern card design with hover effects
-  3. CSS custom properties (variables)
-  4. BEM naming convention
-  5. Flexbox for internal card layouts
+  Purpose: Display products in a responsive grid layout with modern card design
+  
+  Key Features:
+  - Responsive grid that automatically adjusts columns based on viewport width
+  - Interactive product cards with hover effects
+  - Consistent spacing and styling using CSS custom properties
+  - Mobile-friendly design that works across all screen sizes
+  
+  Architecture:
+  - Uses CSS Grid for the main layout system
+  - Implements BEM methodology for predictable and maintainable CSS
+  - Leverages CSS custom properties for easy theming
+  - Uses modern CSS features like grid-template-columns with auto-fit
 -->
 
 <!DOCTYPE html>
@@ -15,7 +22,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Grid</title>
     <style>
-        /* CSS Custom Properties for consistent theming */
+        /* Define CSS Custom Properties (variables) for consistent theming
+           - Makes it easy to update colors and values from a single location
+           - Provides a centralized theming system
+           - Allows for dynamic theme changes via JavaScript if needed */
         :root {
             --primary-color: #2563eb;
             --secondary-color: #1e40af;
@@ -24,20 +34,30 @@
             --spacing-unit: 1rem;
         }
 
-        /* Reset and base styles */
+        /* Reset default browser styles and implement border-box model
+           - Ensures consistent spacing across browsers
+           - Prevents padding from affecting final element dimensions */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Base body styles
+           - Uses system font stack for optimal performance
+           - Implements consistent background color
+           - Adds padding to prevent content from touching viewport edges */
         body {
             font-family: system-ui, -apple-system, sans-serif;
             background-color: var(--background-color);
             padding: var(--spacing-unit);
         }
 
-        /* Grid Container */
+        /* Grid Container
+           - Uses CSS Grid with auto-fit and minmax for responsive behavior
+           - Creates columns that are at least 300px wide
+           - Automatically adjusts number of columns based on available space
+           - Maintains consistent gap between grid items */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -46,7 +66,11 @@
             margin: 0 auto;
         }
 
-        /* Product Card Component */
+        /* Product Card Component
+           - Implements card-style design with shadow and rounded corners
+           - Uses overflow: hidden to contain child elements
+           - Includes subtle transform animation on hover for interactivity
+           - Maintains clean separation between cards using background color */
         .product-card {
             background: white;
             border-radius: 8px;
@@ -55,32 +79,56 @@
             transition: transform 0.2s ease;
         }
 
+        /* Card hover effect
+           - Lifts card slightly when hovered
+           - Provides visual feedback for interaction
+           - Uses transform for smooth GPU-accelerated animation */
         .product-card:hover {
             transform: translateY(-4px);
         }
 
+        /* Product image container
+           - Forces consistent image dimensions
+           - Uses object-fit to maintain aspect ratio
+           - Prevents image distortion while filling container */
         .product-card__image {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
 
+        /* Content container within card
+           - Provides consistent padding around text content
+           - Separates content from card edges
+           - Creates visual hierarchy within card */
         .product-card__content {
             padding: var(--spacing-unit);
         }
 
+        /* Product title styling
+           - Sets appropriate font size for hierarchy
+           - Maintains consistent spacing below title
+           - Uses darker color for better readability */
         .product-card__title {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
             color: #1a1a1a;
         }
 
+        /* Product description styling
+           - Uses lighter color for secondary text
+           - Implements comfortable line height for readability
+           - Maintains spacing between description and price */
         .product-card__description {
             color: #666;
             line-height: 1.5;
             margin-bottom: 1rem;
         }
 
+        /* Price styling
+           - Uses primary color for emphasis
+           - Implements bold weight for visual hierarchy
+           - Stands out from other text elements */
         .product-card__price {
             font-weight: bold;
             color: var(--primary-color);
@@ -88,17 +136,21 @@
     </style>
 </head>
 <body>
+    <!-- Main product grid container -->
     <div class="product-grid">
-        <!-- Product Card 1 -->
+        <!-- Individual product card
+             - Contains product image, title, description, and price
+             - Structured for consistent layout across all cards
+             - Uses BEM classes for styling specificity -->
         <div class="product-card">
-            <img src="https://premiumproducts.pt/wp-content/uploads/2022/01/cropped-logoPP-W.png" alt="Product 1" class="product-card__image">
+            <img src="/api/placeholder/300/200" alt="Product 1" class="product-card__image">
             <div class="product-card__content">
                 <h2 class="product-card__title">Premium Product</h2>
                 <p class="product-card__description">High-quality item with premium features.</p>
                 <span class="product-card__price">$99.99</span>
             </div>
         </div>
-        <!-- Additional cards would be added here -->
+        <!-- Additional cards would follow the same structure -->
     </div>
 </body>
 </html>
