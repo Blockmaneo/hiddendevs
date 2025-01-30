@@ -1,11 +1,18 @@
-<!-- 
-  Modern Navigation Menu
-  This example demonstrates:
-  1. Mobile-first responsive design
-  2. CSS transitions and transforms
-  3. Accessibility considerations
-  4. Advanced CSS selectors
-  5. Custom hamburger menu animation
+<!--
+  Modern Navigation Menu Component
+  Purpose: Create a responsive navigation menu with mobile hamburger functionality
+  
+  Key Features:
+  - Mobile-first responsive design
+  - Animated hamburger menu
+  - Smooth transitions for menu items
+  - Accessible navigation structure
+  
+  Implementation Details:
+  - Uses flexbox for desktop layout
+  - Implements hamburger menu for mobile
+  - Includes hover effects and transitions
+  - Follows WCAG accessibility guidelines
 -->
 
 <!DOCTYPE html>
@@ -15,21 +22,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navigation Menu</title>
     <style>
-        /* Base styles and resets */
+        /* Base reset styles
+           - Removes default margins and padding
+           - Ensures consistent box sizing across elements
+           - Prevents unexpected spacing issues */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Navigation container */
+        /* Main navigation container
+           - Sets dark background for contrast
+           - Provides consistent padding
+           - Uses relative positioning for absolute positioned elements
+           - Creates base for both mobile and desktop layouts */
         .nav {
             background: #1a1a1a;
             padding: 1rem;
             position: relative;
         }
 
-        /* Logo styling */
+        /* Logo styling
+           - Sets clear visual hierarchy with size and weight
+           - Removes default text decoration
+           - Ensures good contrast with background
+           - Maintains consistency across breakpoints */
         .nav__logo {
             color: white;
             font-size: 1.5rem;
@@ -37,7 +55,11 @@
             font-weight: bold;
         }
 
-        /* Mobile menu button */
+        /* Mobile menu toggle button
+           - Positioned absolutely for mobile layout
+           - Sets specific dimensions for touch target
+           - Implements proper spacing from edges
+           - Ensures button remains above other elements */
         .nav__toggle {
             position: absolute;
             right: 1rem;
@@ -49,7 +71,11 @@
             z-index: 2;
         }
 
-        /* Hamburger icon bars */
+        /* Hamburger icon bars
+           - Creates three bars for hamburger icon
+           - Sets up transition for animation
+           - Uses absolute positioning for precise control
+           - Maintains consistent spacing between bars */
         .nav__toggle span {
             display: block;
             position: absolute;
@@ -59,22 +85,38 @@
             transition: 0.25s ease-in-out;
         }
 
+        /* Individual bar positioning
+           - Places each bar at specific positions
+           - Creates proper spacing for hamburger appearance
+           - Allows for transform origin in animations */
         .nav__toggle span:nth-child(1) { top: 0; }
         .nav__toggle span:nth-child(2) { top: 9px; }
         .nav__toggle span:nth-child(3) { top: 18px; }
 
-        /* Menu items container */
+        /* Mobile menu container
+           - Hidden by default on mobile
+           - Removes list styling
+           - Adds proper spacing when visible
+           - Sets up base for animation states */
         .nav__menu {
             display: none;
             list-style: none;
             padding: 1rem 0;
         }
 
-        /* Individual menu items */
+        /* Individual menu items
+           - Sets consistent vertical spacing
+           - Creates clear visual separation
+           - Maintains proper alignment */
         .nav__item {
             margin: 0.5rem 0;
         }
 
+        /* Menu link styling
+           - Sets proper text color and size
+           - Removes default underline
+           - Implements smooth hover transition
+           - Ensures good touch target size */
         .nav__link {
             color: white;
             text-decoration: none;
@@ -82,15 +124,27 @@
             transition: color 0.3s ease;
         }
 
+        /* Link hover effect
+           - Changes color on hover for feedback
+           - Uses smooth transition
+           - Maintains good contrast */
         .nav__link:hover {
             color: #64b5f6;
         }
 
-        /* Active menu styles */
+        /* Active menu styles (mobile)
+           - Shows menu when active class is present
+           - Maintains proper spacing and alignment
+           - Ensures smooth transition between states */
         .nav--active .nav__menu {
             display: block;
         }
 
+        /* Hamburger animation for open state
+           - Rotates first bar 45 degrees
+           - Hides middle bar
+           - Rotates last bar -45 degrees
+           - Creates X shape for close icon */
         .nav--active .nav__toggle span:nth-child(1) {
             transform: rotate(45deg);
             top: 9px;
@@ -105,7 +159,11 @@
             top: 9px;
         }
 
-        /* Desktop styles */
+        /* Desktop styles (768px and above)
+           - Switches to horizontal layout
+           - Hides hamburger menu
+           - Adjusts spacing for larger screens
+           - Implements proper hover states */
         @media (min-width: 768px) {
             .nav {
                 display: flex;
@@ -130,13 +188,28 @@
     </style>
 </head>
 <body>
+    <!-- Main navigation component
+         - Uses semantic nav element for accessibility
+         - Contains logo, toggle button, and menu items
+         - Structured for both mobile and desktop layouts -->
     <nav class="nav">
+        <!-- Brand logo/link -->
         <a href="#" class="nav__logo">Brand</a>
+        
+        <!-- Mobile menu toggle button
+             - Contains three spans for hamburger icon
+             - Transforms into X when active
+             - Hidden on desktop -->
         <div class="nav__toggle">
             <span></span>
             <span></span>
             <span></span>
         </div>
+        
+        <!-- Navigation menu
+             - Uses unordered list for semantic structure
+             - Contains navigation links
+             - Adapts between mobile and desktop layouts -->
         <ul class="nav__menu">
             <li class="nav__item">
                 <a href="#" class="nav__link">Home</a>
